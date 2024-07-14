@@ -1,10 +1,10 @@
-function App() {
+import Index from "./routes/Index"
 
+function App() {
   return (
-    <>
-      <h1>Book Store</h1>
-    </>
+    <div className="bg-gray-200 px-2 min-h-screen  ">
+      <Index/>
+    </div>
   )
 }
-
 export default App

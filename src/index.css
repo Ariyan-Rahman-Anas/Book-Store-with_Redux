@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+/* custom class for enhancing the code quality and readability */
+
+.btn{
+    @apply bg-black text-white px-4 py-1.5 rounded-full border border-transparent hover:bg-white hover:text-black hover:border-black duration-500 
+}
+
+.input-field {
+  @apply block w-full px-2 py-2  text-black bg-transparent border border-black rounded focus:outline-none focus:ring-0 ;
+}
+
+.input-label{
+    @apply absolute text-black duration-300 transform -translate-y-2 scale-75 top-0 z-10 origin-[0] bg-gray-200 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-2
+}
