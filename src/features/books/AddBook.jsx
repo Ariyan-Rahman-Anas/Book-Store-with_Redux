@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch} from "react-redux"
 import { addBook, generateUniqueId } from "./BookSlice"
 import { useNavigate } from "react-router-dom"
 
@@ -9,10 +9,7 @@ export default function AddBook() {
   const [author, setAuthor] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
   const uniqueId= generateUniqueId()
-
-  // const numberOfBooks = useSelector(state => state.booksReducer.books.length)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -20,7 +17,6 @@ export default function AddBook() {
     dispatch(addBook(aNewBook))
     navigate("/show-books",  {replace: true} )
   }
-
 
   return (
     <div className="flex items-center justify-center text-center ">

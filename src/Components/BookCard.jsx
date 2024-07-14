@@ -16,11 +16,10 @@ export default function BookCard({ book }) {
   return (
     <div>
       <div key={id} className="shadow p-4 rounded bg-white hover:bg-gray-100 duration-500 relative "> <h1>{title}</h1>
-        {/* <p>{id} </p> */}
           <p className="text-sm">author: {author} </p>
           <div className="edit-delete flex items-center gap-2 absolute top-2 right-2">
-            <Link to={"/edit-book"} state={{id, title, author}} > <BiSolidEdit /> </Link>
-            <button onClick={()=>handleDeleteBook(id)} ><AiOutlineDelete /> </button>
+            <Link to={"/edit-book"} state={{id, title, author}} className="hover:text-amber-400 duration-500" > <BiSolidEdit /> </Link>
+            <button onClick={()=>handleDeleteBook(id)} className="hover:text-red-500 duration-500" ><AiOutlineDelete /> </button>
           </div>
         </div>
     </div>

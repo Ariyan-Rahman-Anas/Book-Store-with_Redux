@@ -10,6 +10,9 @@
 .btn{
     @apply bg-black text-white px-4 py-1.5 rounded-full border border-transparent hover:bg-white hover:text-black hover:border-black duration-500 
 }
+.btn-2{
+    @apply bg-white text-black px-4 py-1.5 rounded-full border  hover:bg-gray-300 border-black  hover:shadow-md duration-500 
+}
 
 .input-field {
   @apply block w-full px-2 py-2  text-black bg-transparent border border-black rounded focus:outline-none focus:ring-0 ;

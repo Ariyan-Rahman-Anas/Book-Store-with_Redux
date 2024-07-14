@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-
 export function generateUniqueId() {
   const randomPart = Math.ceil(Math.random() * 1000000);
   const datePart = new Date().getTime();
