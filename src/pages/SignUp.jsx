@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiUtils from "../utils/apiUtils";
+import { useState } from "react";
 
 export default function SignUp() {
+    const navigate = useNavigate()
+  
+    const [nameErr, setNameErr] = useState(null)
+    const [emailErr, setEmailErr] = useState(null)
+    const [passErr, setPassErr] = useState(null)
+
     const handleSignUp = async (e) => {
       e.preventDefault()
       const form = e.target
@@ -12,21 +19,29 @@ export default function SignUp() {
       try {
         const aNewUser = { name, email, password }
         const creatingUser = await apiUtils.post("sign-up", aNewUser)
-        console.log(creatingUser)
         if(creatingUser?.user){
-        form.reset();
+          form.reset();
+          setNameErr("")
+          setEmailErr("")
+          setPassErr("")
+          navigate("/", { replace: true })
         }
       } catch (error) {
-        console.log("error is: ", error)
+        const errs = error.response.data.errors
+        if (errs) {
+          setNameErr(errs.name)
+          setEmailErr(errs.email)
+          setPassErr(errs.password)
+        }
       }
     }
 
   return (
-    <div className="flex items-center justify-center min-h-[80vh] text-center ">
-      <div className="add-book my-5  ">
-            <form onSubmit={handleSignUp}  className="w-full border-2 md:w-[50vw] ">
-              <div className="flex flex-col space-y-5 mb-2 ">
-                <div className="relative">
+    <div className="flex items-center justify-center  min-h-[80vh] text-center ">
+      <div className="add-book my-5 w-full ">
+            <form onSubmit={handleSignUp}  className="w-full md:w-[80vw] lg:w-[50vw] mx-auto ">
+              <div className="flex flex-col space-y5 mb-2 ">
+                <div className="relative name">
                   <input
                     type="text"
                     name="name"
@@ -41,7 +56,8 @@ export default function SignUp() {
                       Name
                   </label>
                 </div>
-                <div className="relative">
+                <p className="err-msg">{nameErr}</p>
+                <div className="relative email">
                   <input
                     type="text"
                     name="email"
@@ -56,7 +72,8 @@ export default function SignUp() {
                       Email
                   </label>
                 </div>
-                <div className="relative">
+                <p className="err-msg">{emailErr}</p>
+                <div className="relative password">
                   <input
                       type="password"
                       name="password" required
@@ -70,6 +87,7 @@ export default function SignUp() {
                     Password
                   </label>
                 </div>
+                <p className="err-msg">{passErr}</p>
               </div>
               <input type="submit" value={"Sign Up"} className="btn" />
             </form>

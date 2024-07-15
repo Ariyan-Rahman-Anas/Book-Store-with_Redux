@@ -19,7 +19,7 @@ const apiUtils = {
       const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
         withCredentials: true, 
       });
-      return response.data;
+        return response.data;
     } catch (error) {
       console.error("POST request error:", error);
       throw error;

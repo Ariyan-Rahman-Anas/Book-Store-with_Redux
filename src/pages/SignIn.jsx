@@ -9,7 +9,7 @@ export default function SignIn() {
   return (
     <div className="flex items-center justify-center min-h-[80vh] text-center ">
       <div className="add-book my-5  ">
-            <form onSubmit={handleSignIn} className="w-full border-2 md:w-[50vw] ">
+            <form onSubmit={handleSignIn} className="w-full md:w-[80vw] lg:w-[50vw] mx-auto ">
               <div className="flex flex-col space-y-5 mb-2 ">
                 <div className="relative">
                   <input
