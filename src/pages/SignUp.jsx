@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
+import apiUtils from "../utils/apiUtils";
 
 export default function SignUp() {
+    const handleSignUp = async (e) => {
+      e.preventDefault()
+      const form = e.target
+      const name = form.name.value
+      const email = form.email.value
+      const password = form.password.value
 
-    const handleSignUp = (e) => {
-        e.preventDefault()
+      try {
+        const aNewUser = { name, email, password }
+        const creatingUser = await apiUtils.post("sign-up", aNewUser)
+        console.log(creatingUser)
+        if(creatingUser?.user){
+        form.reset();
+        }
+      } catch (error) {
+        console.log("error is: ", error)
+      }
     }
 
   return (
     <div className="flex items-center justify-center min-h-[80vh] text-center ">
       <div className="add-book my-5  ">
-            <form onSubmit={handleSignUp} className="w-full border-2 md:w-[50vw] ">
+            <form onSubmit={handleSignUp}  className="w-full border-2 md:w-[50vw] ">
               <div className="flex flex-col space-y-5 mb-2 ">
                 <div className="relative">
                   <input
